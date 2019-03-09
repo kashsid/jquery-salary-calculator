@@ -1,6 +1,6 @@
 $(document).ready(docReady);
 
-function docReady(){
+function docReady() {
 
     $('#calcBtn').on('click', addEmployee);
 
@@ -29,36 +29,53 @@ Function mae: newCar
 
 */
 function addEmployee(firstName, lastName, id, title, annualSalary) {
-    console.log( 'in addEmployee:',firstName, lastName, id, title, annualSalary );
+    console.log('in addEmployee:', firstName, lastName, id, title, annualSalary);
     //let result = isValid(); // Calling isValid function and storing the result into variable "result"
 
     //if (result == true) {
-        //console.log('validated');
-    let newEmployee = new Employee($('#firstName').val(), $('#lastName').val(), $('#id').val(), $('#title').val(), $('#annualSal').val());
-        employees.push(newEmployee);
-        console.log(employees);
-        
-        //garage.push( new Car( $('#year').val(), $('#make').val(), $('#model').val()));
-        //disableControls();  // Calling function to disable controls
-       // emptyText();
-        updateSalaryTable();
-        //totalMonthly();
-        return true;
-   // }//end if
+    //console.log('validated');
+    let newEmployee = new Employee($('#firstName').val(),
+        $('#lastName').val(),
+        $('#id').val(),
+        $('#title').val(),
+        $('#annualSal').val());
+
+    employees.push(newEmployee);
+    console.log(employees);
+
+    //disableControls();  // Calling function to disable controls
+    // emptyText();
+    updateSalaryTable();
+    //totalMonthly();
+    return true;
+    // }//end if
 } // end newCard
 
-function updateSalaryTable(){
+function updateSalaryTable() {
     console.log('in updateSalary Function');
-    let totalSalary=0;
-    let outputTable= $('.employeeTable');
+    let totalSalary = 0;
+    let outputTable = $('.employeeTable');
     outputTable.empty();
-    outputTable.append(`<tr><td>First Name</td><td>Last Name</td><td>ID</td><td>Title</td><td>Annual Salary</td></tr>`)
-    for (newEmployee of employees){
-       
-        outputTable.append(`<tr><td> ${newEmployee.firstName} </td> <td>${newEmployee.lastName}</td><td> ${newEmployee.id}</td><td> ${newEmployee.title}</td><td> ${newEmployee.annualSalary} </td></tr>`);
-        totalSalary = totalSalary + (newEmployee.annualSalary/12);
-        console.log(totalSalary);
-        
+    outputTable.append(`<tr><td><strong>First Name</strong></td>
+                        <td><strong>Last Name</strong></td>
+                        <td><strong>ID</strong></td>
+                        <td><strong>Title</strong></td>
+                        <td><strong>Annual Salary</strong>
+                        </td></tr>`)
+    for (newEmployee of employees) {
+        outputTable.append(`<tr><td> ${newEmployee.firstName} </td> 
+                            <td>${newEmployee.lastName}</td>
+                            <td> ${newEmployee.id}</td>
+                            <td> ${newEmployee.title}</td>
+                            <td> ${newEmployee.annualSalary} </td></tr>`);
+
+        totalSalary = totalSalary + (newEmployee.annualSalary / 12);
+
+        $('#monthlySalary').empty();
+
+        $('#monthlySalary').append(totalSalary.toFixed(2));
+
+
     } // end for of
-    
+    console.log(totalSalary);
 }// end updateSalaryTable

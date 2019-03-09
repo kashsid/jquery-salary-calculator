@@ -8,7 +8,7 @@
     <script src="client.js" charset="utf-8"></script>
     <title>Salary Calculator</title>
     <style>
-       
+
     </style>
 
 </head>
@@ -16,67 +16,70 @@
 <body>
     <h1> Salary Calculator</h1>
 
-    
-        <div class='container'>
 
-            <div class='box1'>
-                <input id='firstName' type="text" placeholder='First Name'>
-                <input id='lastName' type="text" placeholder='Last Name'>
-                <input id='id' type="text" placeholder='Id'>
-                <input id='title' type="text" placeholder='Title'>
-                <input id='annualSal' type="number" placeholder='Annual Salary'>
-            </div>
-            <div class='submitBtn'>
-                <button id='calcBtn'> Add </button>
-            </div>
-            <table class='employeeTable'>
-                <tr>
-                    <th>First name</th>
-                    <th>Last name</th>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Annual Salary</th>
-                </tr>
-            
-            
-                <tr>
-                    <td>Alfreds Futterkiste</td>
-                    <td>Maria Anders</td>
-                    <td>Germany</td>
-                    <td>Software Engineer</td>
-                </tr>
-                <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                    <td>Accounts</td>
-                </tr>
-                <tr>
-                    <td>Ernst Handel</td>
-                    <td>Roland Mendel</td>
-                    <td>Austria</td>
-                    <td>Facilities Incharge</td>
-                </tr>
-                <tr>
-                    <td>Island Trading</td>
-                    <td>Helen Bennett</td>
-                    <td>UK</td>
-                    <td>Business Analyst</td>
-                </tr>
-                <tr>
-                    <td>Laughing Bacchus Winecellars</td>
-                    <td>Yoshi Tannamuri</td>
-                    <td>Canada</td>
-                </tr>
-                <tr>
-                    <td>Magazzini Alimentari Riuniti</td>
-                    <td>Giovanni Rovelli</td>
-                    <td>Italy</td>
-                </tr>
-            </table>
+    <div class='container'>
 
+        <div class='box1'>
+            <input id='firstName' type="text" placeholder='First Name'>
+            <input id='lastName' type="text" placeholder='Last Name'>
+            <input id='id' type="text" placeholder='Id'>
+            <input id='title' type="text" placeholder='Title'>
+            <input id='annualSal' type="number" placeholder='Annual Salary'>
         </div>
-    
+        <div class='submitBtn'>
+            <button id='calcBtn'> Add </button>
+        </div>
+        <table class='employeeTable'>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Annual Salary</th>
+            </tr>
+
+
+            <tr>
+                <td>Alfreds Futterkiste</td>
+                <td>Maria Anders</td>
+                <td>Germany</td>
+                <td>Software Engineer</td>
+            </tr>
+            <tr>
+                <td>Centro comercial Moctezuma</td>
+                <td>Francisco Chang</td>
+                <td>Mexico</td>
+                <td>Accounts</td>
+            </tr>
+            <tr>
+                <td>Ernst Handel</td>
+                <td>Roland Mendel</td>
+                <td>Austria</td>
+                <td>Facilities Incharge</td>
+            </tr>
+            <tr>
+                <td>Island Trading</td>
+                <td>Helen Bennett</td>
+                <td>UK</td>
+                <td>Business Analyst</td>
+            </tr>
+            <tr>
+                <td>Laughing Bacchus Winecellars</td>
+                <td>Yoshi Tannamuri</td>
+                <td>Canada</td>
+            </tr>
+            <tr>
+                <td>Magazzini Alimentari Riuniti</td>
+                <td>Giovanni Rovelli</td>
+                <td>Italy</td>
+            </tr>
+        </table>
+        <div id="monthlySalaryDiv">
+            <h2 id="totalMonthly">Total Monthly: $<span id="monthlySalary">0.00</span></h2>
+        </div>
+
+    </div>
+
 </body>
 
 </html>
