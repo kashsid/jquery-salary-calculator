@@ -47,41 +47,33 @@ button {
   color: white;
   opacity: 1;
 }
-.cars{
-  border: 1px solid;
-  border-radius: 15px;
-  padding: 10px;
-  margin-top: 10px;
-}
-.cars li{
-  padding-bottom: 4px;
-  border-bottom: 1px solid #666;
-  font-size: 16px;
-}
+
 img {
   border: 2px solid red;
   border-radius: 4px;
   width: 100px;
 }
- table {
- font-family: arial, sans-serif;
+table {
+font-family: arial, sans-serif;
 border-collapse: collapse;
-            width: 100%;
-            margin-top: 25px;
-        }
+width: 100%;
+margin-top: 25px;
+}
 
-        td,
-        th {
-            border: 1px solid #726f6fb9;
-            text-align: left;
-            padding: 8px;
+td,
+th {
+border: 1px solid #726f6fb9;
+text-align: left;
+padding: 8px;
             
-        }
+}
 
-        tr:nth-child(odd) {
-            background-color: #dddddd;
-        }
+tr:nth-child(odd) {
+background-color: #dddddd;
+}
 
-        label {
-            font-size: 20px;
-                }
+.Salary{
+    background-color: red;
+}
+
+      
