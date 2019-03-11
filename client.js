@@ -21,18 +21,19 @@ class Employee {
 
 let employees = []; // initialize array to hold cars
 /*
-Function mae: newCar
-* Parameters : year,make, model, imageUrl
+Function mae: addEmployee
+* Parameters : yirstName, lastName, id, title, annualSalary
 * Returns: Boolean
-* Process: the function newCar creates a new car and
-* and pushes that into an array "garage"
+* Process: the function creates a new employee and
+* and pushes that into an array "employees"
 
 */
 function addEmployee(firstName, lastName, id, title, annualSalary) {
     console.log('in addEmployee:', firstName, lastName, id, title, annualSalary);
-    ///let result = isValid(); // Calling isValid function and storing the result into variable "result"
+   
+    let result = isValid(); // Calling isValid function and storing the result into variable "result"
 
-   /// if (result == true) {
+    if (result == true) {
    
     let newEmployee = new Employee($('#firstName').val(),
         $('#lastName').val(),
@@ -47,14 +48,15 @@ function addEmployee(firstName, lastName, id, title, annualSalary) {
     clearForm();
    
     displaySalaryTable();
-   
+    
     return true;
-    /// } //end if
+     } //end if
 } // end newCard
 
 
 function displaySalaryTable() {
     console.log('in updateSalary Function');
+    let monthlySalarySpan = document.getElementById('monthlySalary').innerHTML;
     let totalMonthlySalary = 0;
     let outputTable = $('.employeeTable');
    
@@ -81,27 +83,25 @@ function displaySalaryTable() {
 
      totalMonthlySalary = totalMonthlySalary + (newEmployee.annualSalary / 12);
         console.log(totalMonthlySalary);
-  //  }//end for of  
+    }//end for of  
      
     
         $('#monthlySalary').empty();
        
         $('#monthlySalary').append(totalMonthlySalary.toFixed(2));
      
-     
-        if (totalMonthlySalary >= 20000){
-            console.log('this is 20K');
-            $('#monthlySalary').toggleClass('maxSalary'); 
-       } // end check toggleClass
-       
-     
-            
-    } // end for of
+    if (totalMonthlySalary > 20000) {
+       // $('#monthlySalary').toggleClass('maxSalary');
+        $("#totalMonthly span").css("background-color", "red");
+    } // end check toggleClass
+    else if (totalMonthlySalary < 20000) {
+        $("#totalMonthly span").css("background-color", "#eee");
+    }
     
 }// end displaySalaryTable
 
 function removeEmployee(){
-    let monthlySalaryElement = $('#monthlySalaryDiv');
+    
     let currentRow = $(this).closest("tr"); 
     let col1 = currentRow.find("td:eq(0)").text(); // get current row 1st TD value
     let col2 = currentRow.find("td:eq(1)").text(); // get current row 2nd TD
@@ -120,6 +120,7 @@ function removeEmployee(){
            if (employees == undefined || employees.length == 0){
                 location.reload();
             }
+          
            displaySalaryTable();
           
          
@@ -165,5 +166,6 @@ function isValid() {
 }
     return true;
 }// End isValid
+
 
 

@@ -1,6 +1,7 @@
 body{
   background-color: #eee;
   font-family: sans-serif;
+   
 }
 input{
   padding: 10px;
@@ -76,6 +77,6 @@ background-color: #dddddd;
     background-color: red;
 }
 .normalSal{
-  background-color: white;
+  background-color: #eee;
 }
       
