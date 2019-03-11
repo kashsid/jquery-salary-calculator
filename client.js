@@ -3,7 +3,7 @@ $(document).ready(docReady);
 function docReady() {
 
     $('#calcBtn').on('click', addEmployee);
-    $('.employeeTable').on('click','.removeEmployeeButton',removeEmployee)
+    $('.employeeTable').on('click', '.removeEmployeeButton', removeEmployee)
 }
 /*
 Class Employees
@@ -29,37 +29,31 @@ Function mae: addEmployee
 
 */
 function addEmployee(firstName, lastName, id, title, annualSalary) {
-    console.log('in addEmployee:', firstName, lastName, id, title, annualSalary);
-   
+
     let result = isValid(); // Calling isValid function and storing the result into variable "result"
 
     if (result == true) {
-   
-    let newEmployee = new Employee($('#firstName').val(),
-        $('#lastName').val(),
-        $('#id').val(),
-        $('#title').val(),
-        $('#annualSal').val());
 
-    employees.push(newEmployee);
-    console.log(employees);
+        let newEmployee = new Employee($('#firstName').val(),
+            $('#lastName').val(),
+            $('#id').val(),
+            $('#title').val(),
+            $('#annualSal').val());
 
-    //disableControls();  // Calling function to disable controls
-    clearForm();
-   
-    displaySalaryTable();
-    
-    return true;
-     } //end if
+        employees.push(newEmployee);
+        clearForm();
+        displaySalaryTable();
+
+        return true;
+    } //end if
 } // end newCard
 
-
+// Update employee salary table on DOM
 function displaySalaryTable() {
-    console.log('in updateSalary Function');
-    let monthlySalarySpan = document.getElementById('monthlySalary').innerHTML;
+
     let totalMonthlySalary = 0;
     let outputTable = $('.employeeTable');
-   
+
     outputTable.empty();
 
     outputTable.append(`<tr><td><strong>First Name</strong></td>
@@ -70,9 +64,9 @@ function displaySalaryTable() {
                         <td><strong>Remove Employee?</strong></td>
                         </tr>
                         <h2 id="totalMonthly">Total Monthly: $<span id="monthlySalary">0.00</span></h2>`)
-                       
 
-                        
+
+
     for (newEmployee of employees) {
         outputTable.append(`<tr><td> ${newEmployee.firstName} </td> 
                             <td>${newEmployee.lastName}</td>
@@ -81,68 +75,63 @@ function displaySalaryTable() {
                             <td> $${Number(newEmployee.annualSalary).toFixed(2)} </td>
                             <td> <button class="removeEmployeeButton">Remove</button></td></tr>`);
 
-     totalMonthlySalary = totalMonthlySalary + (newEmployee.annualSalary / 12);
-        console.log(totalMonthlySalary);
-    }//end for of  
-     
-    
-        $('#monthlySalary').empty();
+        totalMonthlySalary = totalMonthlySalary + (newEmployee.annualSalary / 12);
        
-        $('#monthlySalary').append(totalMonthlySalary.toFixed(2));
-     
+    }//end for of  
+
+
+    $('#monthlySalary').empty();
+
+    $('#monthlySalary').append(totalMonthlySalary.toFixed(2));
+
     if (totalMonthlySalary > 20000) {
-       // $('#monthlySalary').toggleClass('maxSalary');
+        // $('#monthlySalary').toggleClass('maxSalary');
         $("#totalMonthly span").css("background-color", "red");
     } // end check toggleClass
     else if (totalMonthlySalary < 20000) {
         $("#totalMonthly span").css("background-color", "#eee");
     }
-    
-}// end displaySalaryTable
 
-function removeEmployee(){
-    
-    let currentRow = $(this).closest("tr"); 
+}// end displaySalaryTable
+// Remove employee on click of button
+function removeEmployee() {
+
+    let currentRow = $(this).closest("tr");
     let col1 = currentRow.find("td:eq(0)").text(); // get current row 1st TD value
     let col2 = currentRow.find("td:eq(1)").text(); // get current row 2nd TD
     let col3 = currentRow.find("td:eq(2)").text(); // get current row 3rd TD
-    
-  
-   for (let i=0; i < employees.length; i++){
-       let fname=employees[i].firstName;
-       let lname=employees[i].lastName;
-       let empid=employees[i].id;
-       if (fname == col1.trim() && lname== col2.trim() && empid== col3.trim()){
-           $(this).parent().parent().fadeOut(600);
-           
-            employees.splice(i,1);
 
-           if (employees == undefined || employees.length == 0){
+
+    for (let i = 0; i < employees.length; i++) {
+        let fname = employees[i].firstName;
+        let lname = employees[i].lastName;
+        let empid = employees[i].id;
+        if (fname == col1.trim() && lname == col2.trim() && empid == col3.trim()) {
+            $(this).parent().parent().fadeOut(600);
+
+            employees.splice(i, 1);
+
+            if (employees == undefined || employees.length == 0) {
                 location.reload();
             }
-          
-           displaySalaryTable();
-          
-         
-            }
-   }
 
-   
-   
-    } // end removeEmployee 
-    // Function to clear the text fields after the data is entered.
-    function clearForm(){
-        $('#firstName').val('');
-        $('#lastName').val('');
-        $('#id').val('');
-        $('#title').val('');
-        $('#annualSal').val('');
-    }// end clearForm
+            displaySalaryTable();
+        }
+    } //End for loop
+} // end removeEmployee 
+// Function to clear the text fields after the data is entered.
+function clearForm() {
+    $('#firstName').val('');
+    $('#lastName').val('');
+    $('#id').val('');
+    $('#title').val('');
+    $('#annualSal').val('');
+}// end clearForm
 
-    // function to chaeck if all fields are filled in.
+// function to chaeck if all fields are filled in.
 
 function isValid() {
-    console.log('in is empty');
+    
     if ($('#firstName').val() == '') {
         alert("Please enter first name");
         return false;
@@ -159,11 +148,11 @@ function isValid() {
         alert("Please enter employee title");
         return false;
     }
-    
-     else if ($('#annualSal').val() == '') {
+
+    else if ($('#annualSal').val() == '') {
         alert("Please enter employee annual salary");
-    return false;
-}
+        return false;
+    }
     return true;
 }// End isValid
 

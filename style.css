@@ -72,11 +72,3 @@ padding: 8px;
 tr:nth-child(odd) {
 background-color: #dddddd;
 }
-
-.maxSalary{
-    background-color: red;
-}
-.normalSal{
-  background-color: #eee;
-}
-      
